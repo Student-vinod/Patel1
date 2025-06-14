@@ -18,16 +18,20 @@ public class Employee {
 	
 	@Column(name = "email_id")
 	private String emailId;
+
+	@Column(name = "number")
+	private String number;
 	
 	public Employee() {
 		
 	}
 	
-	public Employee(String firstName, String lastName, String emailId) {
+	public Employee(String firstName, String lastName, String emailId, String number) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
+		this.number =number;
 	}
 	public long getId() {
 		return id;
@@ -45,7 +49,12 @@ public class Employee {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
+
 		this.lastName = lastName;
+	}
+	public void setNumber(String number) {
+
+		this.number = number;
 	}
 	public String getEmailId() {
 		return emailId;
@@ -53,4 +62,8 @@ public class Employee {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+
+    public String getNumber() {
+        return number;
+    }
 }
