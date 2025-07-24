@@ -22,12 +22,12 @@ public class OtpController {
 
     @PostMapping("/verify")
     public ResponseEntity<String> verifyOtp(@RequestParam String email, @RequestParam String otp) {
-        boolean isValid = otpService.validateOtp(email, otp);
-        if (isValid) {
-            otpService.clearOtp(email);
-            return ResponseEntity.ok("OTP verified successfully.");
+        String result = otpService.validateOtp(email, otp);
+
+        if ("OTP verified successfully.".equals(result)) {
+            return ResponseEntity.ok(result);
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid OTP.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
 }
